@@ -34,15 +34,12 @@ else
 fi
 
 # --- Step 3: Copy docker-compose.override.yaml (pre-built images) ---
-if [ ! -f docker-compose.override.yaml ]; then
-    if [ -f "$SCRIPT_DIR/docker-compose.override.yaml" ]; then
-        echo "[3/4] Copying docker-compose.override.yaml (pre-built images)..."
-        cp "$SCRIPT_DIR/docker-compose.override.yaml" .
-    else
-        echo "[3/4] No override file found — will build from source (slower first run)."
-    fi
+# Always overwrite — ensures updates to image names propagate on re-run.
+if [ -f "$SCRIPT_DIR/docker-compose.override.yaml" ]; then
+    echo "[3/4] Copying docker-compose.override.yaml (pre-built images)..."
+    cp "$SCRIPT_DIR/docker-compose.override.yaml" .
 else
-    echo "[3/4] docker-compose.override.yaml already exists — skipping."
+    echo "[3/4] No override file found — will build from source (slower first run)."
 fi
 
 # --- Step 4: Start Firecrawl ---
