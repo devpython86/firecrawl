@@ -1,0 +1,10 @@
+# Pre-built images — skips the 5-15 minute source build on first run.
+# Copied into /workspaces/firecrawl/ by setup.sh.
+# If these images aren't available, setup.sh falls back to building from source.
+services:
+  api:
+    image: ghcr.io/mendableai/firecrawl:latest
+    build: !reset null
+  playwright-service:
+    image: ghcr.io/mendableai/firecrawl-playwright-service:latest
+    build: !reset null
