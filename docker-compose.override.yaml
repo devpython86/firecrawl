@@ -3,8 +3,8 @@
 # If these images aren't available, setup.sh falls back to building from source.
 services:
   api:
-    image: ghcr.io/mendableai/firecrawl:latest
+    image: ghcr.io/firecrawl/firecrawl:latest
     build: !reset null
   playwright-service:
-    image: ghcr.io/mendableai/firecrawl-playwright-service:latest
+    image: ghcr.io/firecrawl/playwright-service:latest
     build: !reset null
