@@ -21,7 +21,7 @@ This repo gives you a one-command setup for Firecrawl inside a GitHub Codespace 
 1. A **GitHub account** (free tier works)
 2. The **GitHub CLI** (`gh`) installed on your local machine — [install guide](https://cli.github.com/)
 
-That's it. No Docker, no Node, no Homebrew. Everything else runs inside the Codespace.
+That's it. No Docker, Node, or Homebrew is required on your local machine. Docker is installed inside the Codespace by the devcontainer configuration.
 
 ## Quick start
 
@@ -186,7 +186,13 @@ Check the logs: `cd /workspaces/firecrawl-app && docker compose logs`. The most 
 
 **"docker: command not found"**
 
-The Codespace was created without applying the Docker feature. Rebuild the container from the VS Code Command Palette (`Codespaces: Rebuild Container`) and run `bash setup.sh` again. The feature is declared in `.devcontainer/devcontainer.json`.
+The Codespace was created without applying the Docker feature. Rebuild the container from the VS Code Command Palette (`Codespaces: Rebuild Container`) and run `bash setup.sh` again. From a local terminal, the equivalent is:
+
+```bash
+gh codespace rebuild -c <codespace-name>
+```
+
+The feature and privileged mode are declared in `.devcontainer/devcontainer.json`; changing Compose files cannot install Docker into an already-created container.
 
 **"WARN — You're bypassing authentication"**
 

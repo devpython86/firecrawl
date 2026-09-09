@@ -11,8 +11,10 @@ echo ""
 
 if ! command -v docker >/dev/null 2>&1; then
     echo "Docker is not available in this Codespace."
-    echo "Rebuild the container so the docker-in-docker feature in .devcontainer/devcontainer.json is installed."
-    echo "In VS Code: Cmd/Ctrl+Shift+P -> Codespaces: Rebuild Container."
+    echo "This container was created without the Docker-in-Docker feature."
+    echo "Rebuild the container, then run this script again:"
+    echo "  VS Code Command Palette -> Codespaces: Rebuild Container"
+    echo "  or: gh codespace rebuild -c \$CODESPACE_NAME"
     exit 1
 fi
 
