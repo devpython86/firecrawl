@@ -101,7 +101,7 @@ The `gh codespace ports forward` command you're already running counts as active
 Inside the Codespace, stream Firecrawl logs so each request resets the idle timer:
 
 ```bash
-cd /workspaces/firecrawl && docker compose logs -f
+cd /workspaces/firecrawl-app && docker compose logs -f
 ```
 
 **Fix 3: Extend the timeout**
@@ -173,7 +173,7 @@ Token rotates on every restart — high maintenance.
 ```
 .devcontainer/
   devcontainer.json        # Codespace config: Ubuntu, docker-in-docker, auto-start
-docker-compose.override.yaml  # Pre-built images (copied to /workspaces/firecrawl/ by setup.sh)
+docker-compose.override.yaml  # Pre-built images (copied to /workspaces/firecrawl-app/ by setup.sh)
 setup.sh                   # All-in-one: clone, configure, start Firecrawl
 README.md                  # You are here
 ```
@@ -182,7 +182,7 @@ README.md                  # You are here
 
 **"Firecrawl didn't respond within 2 minutes"**
 
-Check the logs: `cd /workspaces/firecrawl && docker compose logs`. The most common cause is images still downloading on first run.
+Check the logs: `cd /workspaces/firecrawl-app && docker compose logs`. The most common cause is images still downloading on first run.
 
 **"WARN — You're bypassing authentication"**
 
@@ -190,7 +190,7 @@ Expected. `USE_DB_AUTHENTICATION=false` is the correct setting for self-hosted. 
 
 **Docker Compose errors about `!reset`**
 
-The `docker-compose.override.yaml` uses `!reset null` (Docker Compose v2.24+). If your Codespace has an older version, delete the override and let it build from source: `rm /workspaces/firecrawl/docker-compose.override.yaml && cd /workspaces/firecrawl && docker compose up -d`
+The `docker-compose.override.yaml` uses `!reset null` (Docker Compose v2.24+). If your Codespace has an older version, delete the override and let it build from source: `rm /workspaces/firecrawl-app/docker-compose.override.yaml && cd /workspaces/firecrawl-app && docker compose up -d`
 
 **Port 3663 not accessible after tunnel**
 
