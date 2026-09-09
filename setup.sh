@@ -9,6 +9,18 @@ echo ""
 echo "=== Firecrawl Codespace Setup ==="
 echo ""
 
+if ! command -v docker >/dev/null 2>&1; then
+    echo "Docker is not available in this Codespace."
+    echo "Rebuild the container so the docker-in-docker feature in .devcontainer/devcontainer.json is installed."
+    echo "In VS Code: Cmd/Ctrl+Shift+P -> Codespaces: Rebuild Container."
+    exit 1
+fi
+
+if ! docker compose version >/dev/null 2>&1; then
+    echo "Docker Compose v2 is not available. Rebuild the Codespace container and try again."
+    exit 1
+fi
+
 # --- Step 1: Clone Firecrawl ---
 if [ ! -d "$FIRECRAWL_DIR" ]; then
     echo "[1/4] Cloning Firecrawl..."

@@ -184,6 +184,10 @@ README.md                  # You are here
 
 Check the logs: `cd /workspaces/firecrawl-app && docker compose logs`. The most common cause is images still downloading on first run.
 
+**"docker: command not found"**
+
+The Codespace was created without applying the Docker feature. Rebuild the container from the VS Code Command Palette (`Codespaces: Rebuild Container`) and run `bash setup.sh` again. The feature is declared in `.devcontainer/devcontainer.json`.
+
 **"WARN — You're bypassing authentication"**
 
 Expected. `USE_DB_AUTHENTICATION=false` is the correct setting for self-hosted. Safe to ignore.
