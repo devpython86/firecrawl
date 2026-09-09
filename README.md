@@ -186,10 +186,10 @@ Check the logs: `cd /workspaces/firecrawl-app && docker compose logs`. The most 
 
 **"docker: command not found"**
 
-The Codespace was created without applying the Docker feature. Rebuild the container from the VS Code Command Palette (`Codespaces: Rebuild Container`) and run `bash setup.sh` again. From a local terminal, the equivalent is:
+The Codespace was created without applying the Docker feature. Rebuild the container from the VS Code Command Palette (`Codespaces: Rebuild Container`) and run `bash setup.sh` again. This command must be run from your local machine, not inside the Codespace. From a local terminal with GitHub CLI installed and authenticated, the equivalent is:
 
 ```bash
-gh codespace rebuild -c <codespace-name>
+gh codespace rebuild -c musical-memory-q7gw74gr64vf945g
 ```
 
 The feature and privileged mode are declared in `.devcontainer/devcontainer.json`; changing Compose files cannot install Docker into an already-created container.
